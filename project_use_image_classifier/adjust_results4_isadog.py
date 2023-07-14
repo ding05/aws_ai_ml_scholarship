@@ -4,7 +4,7 @@
 #                                                                             
 # PROGRAMMER: Ding Ning
 # DATE CREATED: July 11, 2023
-# REVISED DATE: July 13, 2023
+# REVISED DATE: July 14, 2023
 # PURPOSE: Create a function adjust_results4_isadog that adjusts the results 
 #          dictionary to indicate whether or not the pet image label is of-a-dog, 
 #          and to indicate whether or not the classifier image label is of-a-dog.
@@ -152,4 +152,4 @@ def adjust_results4_isadog(results_dic, dogfile):
             # Classifier Label IS NOT image of Dog (e.g. NOT in dognames_dic)
             # appends (0, 0) because both labels aren't dogs
             else:
-                results_dic[key].extend((0, 0))
+                value.extend((0, 0))

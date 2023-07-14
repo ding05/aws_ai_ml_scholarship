@@ -4,7 +4,7 @@
 #                                                                             
 # PROGRAMMER: Ding Ning
 # DATE CREATED: July 11, 2023
-# REVISED DATE: July 13, 2023
+# REVISED DATE: July 14, 2023
 # PURPOSE: Create a function calculates_results_stats that calculates the 
 #          statistics of the results of the programrun using the classifier's model 
 #          architecture to classify the images. This function will use the 
@@ -80,10 +80,10 @@ def calculates_results_stats(results_dic):
     results_stats_dic['n_correct_breed'] = 0       
     
     # process through the results dictionary
-    for key in results_dic:
+    for key, value in results_dic.items():
          
         # Labels Match Exactly
-        if results_dic[key][2] == 1:
+        if value[2] == 1:
             results_stats_dic['n_match'] += 1
 
         # REPLACE pass with CODE that counts how many pet images of
@@ -97,16 +97,16 @@ def calculates_results_stats(results_dic):
         # representing the number of correctly classified dog breeds.
         #           
         # Pet Image Label is a Dog AND Labels match- counts Correct Breed
-        if results_dic[key][3] == 1 and results_dic[key][2] == 1:
+        if value[3] == 1 and value[2] == 1:
             results_stats_dic['n_correct_breed'] += 1
         
         # Pet Image Label is a Dog - counts number of dog images
-        if results_dic[key][3] == 1:
+        if value[3] == 1:
             results_stats_dic['n_dogs_img'] += 1
             
             # Classifier classifies image as Dog (& pet image is a dog)
             # counts number of correct dog classifications
-            if results_dic[key][4] == 1:
+            if value[4] == 1:
                 results_stats_dic['n_correct_dogs'] += 1
 
         # REPLACE pass with CODE that counts how many pet images 
@@ -123,7 +123,7 @@ def calculates_results_stats(results_dic):
         # classified NOT-a-dog images.
         #           
         # Pet Image Label is NOT a Dog
-        if results_dic[key][3] == 0 and results_dic[key][4] == 0:
+        if value[3] == 0 and value[4] == 0:
             # Classifier classifies image as NOT a Dog(& pet image isn't a dog)
             # counts number of correct NOT dog clasifications.
             results_stats_dic['n_correct_notdogs'] += 1
